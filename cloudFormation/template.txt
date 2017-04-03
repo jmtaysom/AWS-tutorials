@@ -1,0 +1,22 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Basic template to deploy S3 bucket and EC2 instance"
+
+    "Resources": {
+        "S3Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "AccessControl": "PublicRead",
+                "BucketName": "LinuxAcademyDemo-2017Taysom"
+            }
+        },
+        "EC2Instance": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "ImageID": "ami-1ecae776",
+                "InstanceType": "t2.micro"
+            }
+        }
+
+    }
+}
