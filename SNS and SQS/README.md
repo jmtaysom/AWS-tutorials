@@ -12,3 +12,12 @@ Using a SQS is a three part process:
 
 
 ### II. Simple Notification Service
+
+SNS is an amazon resource that allows you to send messages like email or text messages. It can also be used to trigger a Lambda process. Create a SNS topic with a name (and description if wanted or if it is to be used for a text message). To use it with Lambda create a new Lambda expression and when you configure triggers select SNS and pick the appropriate topic.
+
+Using SNS is a three part process:
+1. Create a message, in my case a dictionary which needs a key named 'default' with a value that is a string. I used `json.dumps(AnotherDictionary)` as the value.
+1. Publish to SNS using `sns.publish(TopicArn=topic, Message=json.dumps(message), MessageStructure='json')` with the topic being the TopicArn being the Amazon Resource Name of the topic.
+1. Inside the Lambda script you can load the message back in with `message = json.loads(event['Records'][0]['Sns']['Message'])` which gives you back the dictionary that was dumped into the `default` key.
+
+As soon as something is published to the topic the Lambda scipt will execute and it will have access to everything that was put into the message.
