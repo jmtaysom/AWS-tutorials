@@ -2,6 +2,8 @@ The purpose of this is to demonstrate how to set up an application to fall back 
 
 Steps:
 1. Launch a web server EC2 instance
+  1. yum install httpd
+  1. apachectl start
 1. set up an ELB that will serve traffic from the web server
 1. Set up a cloud front distrobution with an alternate domain name pointing to the domain of your application. Select the origin to be the s3 bucket that contains your fall back web page.
 1. In Route 53 create a record set (or modify an existing one) to point the URL to the alias target of the ELB. Switch the routing policy to failover. The ELB is primary and evaluate health must be active.
