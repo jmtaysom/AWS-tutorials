@@ -15,3 +15,13 @@
 1. Next optionally configure the logs.
 1. If using SNS, go to SNS and create a subscription.
 
+## Setting up a database
+1. Open up RDS
+1. Select a database like MySQL community edition.
+1. If meant for production select Multi-AZ Deployment which will increase availability/resilency of the application.
+1. Choose Instance Class and storage type. General purpose storage gives burstable capabilities of IOPs.
+1. Turn off public accessibility unless it needs to be publicly accessible.
+1. Set up backup windows and upgrade windows if desired.
+1. Deploy the database.
+
+
