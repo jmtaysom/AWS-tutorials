@@ -24,4 +24,9 @@
 1. Set up backup windows and upgrade windows if desired.
 1. Deploy the database.
 
-
+## Bootstraping
+1. Create a IAM role so the EC2 instances can access other needed parts of AWS 
+1. Select EC2 role.
+    1. Search for S3
+    1. Select Read only access
+1. 
