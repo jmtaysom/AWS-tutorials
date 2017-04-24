@@ -24,7 +24,7 @@
 1. Set up backup windows and upgrade windows if desired.
 1. Deploy the database.
 
-## Bootstraping
+## Setting up EC2
 1. Create a IAM role so the EC2 instances can access other needed parts of AWS 
 1. Select EC2 role.
     1. Search for S3
@@ -83,4 +83,31 @@
 1. set up the wordpress site
 1. try visiting the route53 name
 1. In the settings set up the Website url to yourURL.com
+
+## W3 Total Cache Plugin
+1. Google W3 Cache Plugin which helps distribute images and other static files
+1. In the EC2 instance:
+    1. `cd /var/www/wordpress/wp-content/plugins`
+    1. wget the url for the plugin
+    1. unzip the download
+1. Go to the website -> plugins -> activate the plugin.
+1. Manually upload the changes back to the EC2 instance:
+    1. cd ~/var/www
+    1. `chown -R www-data:www-data`
+    1. `cd wordpress`
+    1. `vim wp-config.php` and add the lines as directed by the website
+1. Setup Https:
+    1. `vim .htaccess`
+    1. Add the lines as directed by the website.
+1. Create a bash script to execute the series of commands as directed:
+    1. `vim execute-commands`
+    1. Paste in the commands
+    1. `chmod +x execute-commands`
+    1. `./execute-commands`
+    1. `rm execute-commands`
+1. `cd ..`
+1. `chown www-data:www-data -R wordpress/`
+1. In the website -> Performance -> CDN -> change to cloud front
+1. In the webstie -> CDN -> it asks for an Access Key and Secret Key. It is okay to place them here because it doesnt end up in the EC2 instance but in the database. 
+
 
