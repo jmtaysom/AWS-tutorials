@@ -110,4 +110,24 @@
 1. In the website -> Performance -> CDN -> change to cloud front
 1. In the webstie -> CDN -> it asks for an Access Key and Secret Key. It is okay to place them here because it doesnt end up in the EC2 instance but in the database. 
 
+## Setting up CloudFront
+1. Create an S3 bucket to store data for CF
+1. Go to CloudFront and start a new distribution.
+1. Select Web
+1. Select origin Domain name which is the S3 bucket.
+1. Add alternate Domain Name -> cdn.domainname.com
+1. Enable distribution.
+1. Create distribution.
+1. In Route53 add a record set for the CDN alias with the alternate domain name.
+1. In IAM create a user for wordpressapp with credentials.
+1. Add those credentials to the wordpress app.
+1. Add policies for S3 Full Access and CloudFront Full Access
+1. Add the CloudFront Alternate domain name to Wordpress
+1. Add the S3 bucket to Wordpress
+1. In prefromance export the files for the CDN
+1. Go to the homepage of the wordpress app to ensure that it looks correct still.
+1. Ensure in S3 that the bucket all allows everyone to read the files from the bucket.
+
+
+
 
