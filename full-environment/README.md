@@ -128,6 +128,25 @@
 1. Go to the homepage of the wordpress app to ensure that it looks correct still.
 1. Ensure in S3 that the bucket all allows everyone to read the files from the bucket.
 
-
+## Building the AMI
+1. Ensure you have a bootstrapping S3 bucket.
+1. Temporarily add S3 full access to the IAM Role
+1. Connect to EC2 instance.
+    1. `sudo apt-get python-pip`
+    1. `pip install awscli`
+1. In EC2 console -> Actions -> Create Image
+1. Set up image name and description.
+1. Create image
+1. Delete old EC2 instance
+1. Create new EC2 instance with IAM Role from AMI
+    1. Tag the instance
+    1. Use the default security group
+1. Connect to the new instance
+    1. `sudo su`
+    1. `aws configure` set only the region
+    1. `aws s3 ls` to make sure you can see your buckets
+    1. `cd \var\www`
+    1. `aws s3 cp --recursive wordpress/ s3://bucketname
+1. Check s3 bucket to make sure the files there.
 
 
