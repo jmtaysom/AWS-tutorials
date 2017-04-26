@@ -178,4 +178,5 @@
 1. Tag your group. app:wordpress, env:production
 1. Finalize the creation
 
-
+## Troubleshooting Environment Issues
+1. 
