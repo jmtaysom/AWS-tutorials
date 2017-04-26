@@ -149,4 +149,33 @@
     1. `aws s3 cp --recursive wordpress/ s3://bucketname
 1. Check s3 bucket to make sure the files there.
 
+## Launch Configurations
+1. Terminate any existing instances.
+1. Go to Launch configurations 
+1. Create launch configuration
+1. Select your AMI, instance size, and IAM role
+1. Set up user data.
+   
+   `#!/bin/bash`
+   
+   `aws s3 cp --recursive s3://la-wordpress/ /var/www/wordpress/`
+1. Chose default VPC security group
+1. Select a keypair for your launch configuration
+
+
+## Autoscaling group
+1. Create Autoscaling group
+1. Start with 2 instance.
+1. Add all subnets.
+1. Use Default VPC
+1. In advanced details
+    1. Recieve traffic from ELB
+    1. Health check type set to EC2
+1. In scaling policies
+    1. Scale 2 to 5 instances
+    1. Create new alarm for avg CPU utilization is >= 80 increase by 1
+    1. Create new alarm for <= 60 decrease by 1
+1. Tag your group. app:wordpress, env:production
+1. Finalize the creation
+
 
