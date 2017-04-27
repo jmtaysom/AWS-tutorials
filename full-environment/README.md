@@ -178,5 +178,24 @@
 1. Tag your group. app:wordpress, env:production
 1. Finalize the creation
 
-## Troubleshooting Environment Issues
-1. 
+## Route 53 Failover
+1. Create S3 bucket for hosting static page
+1. Enable website hosting
+1. set the index document and error document to index.html
+1. Create a simple index.html
+1. upload the index.html to S3
+1. Update the permissions of the index page so that everyone can view it.
+1. Check the static website hosting endpoint to ensure the page is being served
+1. In CloudFront create a new web distrobution
+1. Select the S3 bucket as the origin
+1. Add in alternate domain names for the domain of the website
+1. Set default root object
+1. In Route 53 create record sets for both domain names. 
+    1. Select the CloudFront Distribution.
+    1. Set Routing Policy as failover
+    1. Set record type as Secondary
+    1. Do not evaluate target health
+1. Go to the ELB and remove the instances to break the application.
+1. Verify that the failover page is now being displayed on the website.
+1. Add the instances back into the ELB and verify with a hard refresh.
+
